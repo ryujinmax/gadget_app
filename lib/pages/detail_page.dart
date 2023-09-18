@@ -11,7 +11,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  bool isFavorite = false; // Menambahkan status favorit di sini
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _DetailPageState extends State<DetailPage> {
                       SizedBox(
                         height: 30,
                       ),
-                      // NOTE : TITLE
+                  
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: edge,
@@ -100,7 +100,7 @@ class _DetailPageState extends State<DetailPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      // NOTE : DESC
+                      // DESC
                       Padding(
                         padding: EdgeInsets.only(left: edge),
                         child: Text(
@@ -198,7 +198,7 @@ class _DetailPageState extends State<DetailPage> {
                         isFavorite = !isFavorite;
                       });
                     },
-                  ), // Menggunakan widget FavoriteButton
+                  ), 
                 ],
               ),
             ),
