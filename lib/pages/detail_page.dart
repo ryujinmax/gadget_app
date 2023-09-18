@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gadget_app/models/gadget.dart';
 import 'package:gadget_app/theme.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final Gadget gadget;
   DetailPage({required this.gadget});
+
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  bool isFavorite = false; // Menambahkan status favorit di sini
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class DetailPage extends StatelessWidget {
         child: Stack(
           children: [
             Image.asset(
-              gadget.imageAsset,
+              widget.gadget.imageAsset,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.fill,
             ),
@@ -50,7 +57,7 @@ class DetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  gadget.name,
+                                  widget.gadget.name,
                                   style: blackTextStyle.copyWith(
                                     fontSize: 22,
                                   ),
@@ -66,7 +73,7 @@ class DetailPage extends StatelessWidget {
                                     ),
                                     children: [
                                       TextSpan(
-                                          text: gadget.producer,
+                                          text: widget.gadget.producer,
                                           style: blackTextStyle.copyWith(
                                             fontSize: 16,
                                           )),
@@ -82,7 +89,7 @@ class DetailPage extends StatelessWidget {
                                   color: Colors.orange,
                                 ),
                                 Text(
-                                  '${gadget.rating}',
+                                  '${widget.gadget.rating}',
                                   style: blackTextStyle,
                                 ),
                               ],
@@ -109,7 +116,7 @@ class DetailPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: edge),
                         child: Text(
-                          gadget.description,
+                          widget.gadget.description,
                           style: greyTextStyle.copyWith(
                             fontSize: 14,
                           ),
@@ -129,7 +136,7 @@ class DetailPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              '\Rp${gadget.price}',
+                              '\Rp${widget.gadget.price}',
                               style: blackTextStyle.copyWith(
                                 fontSize: 24,
                               ),
@@ -184,7 +191,14 @@ class DetailPage extends StatelessWidget {
                           Navigator.pop(context);
                         }),
                   ),
-                  FavoriteButton(),
+                  FavoriteButton(
+                    isFavorite: isFavorite,
+                    toggleFavorite: () {
+                      setState(() {
+                        isFavorite = !isFavorite;
+                      });
+                    },
+                  ), // Menggunakan widget FavoriteButton
                 ],
               ),
             ),
@@ -195,13 +209,11 @@ class DetailPage extends StatelessWidget {
   }
 }
 
-class FavoriteButton extends StatefulWidget {
-  @override
-  _FavoriteButtonState createState() => _FavoriteButtonState();
-}
+class FavoriteButton extends StatelessWidget {
+  final bool isFavorite;
+  final VoidCallback toggleFavorite;
 
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool isFavorite = false;
+  FavoriteButton({required this.isFavorite, required this.toggleFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -212,11 +224,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
           isFavorite ? Icons.favorite : Icons.favorite_border,
           color: Colors.red,
         ),
-        onPressed: () {
-          setState(() {
-            isFavorite = !isFavorite;
-          });
-        },
+        onPressed: toggleFavorite,
       ),
     );
   }
