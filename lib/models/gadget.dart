@@ -43,7 +43,7 @@ var GadgetList = [
     rating: 4.3,
   ),
   Gadget(
-    name: 'Samsung S23 Ultra 8/258 GB',
+    name: 'Samsung S23 Ultra 258 GB',
     imageAsset: 'images/S23U.jpeg',
     price: 23.000000,
     description: 'Beli HP Galaxy S23 Ultra bergaransi resmi & dapatkan diskon hingga Rp 2.000.000 dengan Trade-In & Gratis SC+ selama 6 Bulan di Samsung Indonesia.',
