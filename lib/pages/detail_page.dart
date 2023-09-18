@@ -19,6 +19,7 @@ class _DetailPageState extends State<DetailPage> {
       backgroundColor: whiteColor,
       body: SafeArea(
         bottom: false,
+<<<<<<< HEAD
         child: Stack(
           children: [
             Image.asset(
@@ -176,21 +177,163 @@ class _DetailPageState extends State<DetailPage> {
               padding: EdgeInsets.symmetric(
                 horizontal: edge,
                 vertical: 30,
+=======
+        child: SingleChildScrollView(
+          // Menggunakan SingleChildScrollView
+          child: Stack(
+            children: [
+              Image.asset(
+                gadget.imageAsset,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
+>>>>>>> 053649fc5e008d823ef6947d5ddf33fde55f7a11
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.grey,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        }),
+                  SizedBox(
+                    height: 525,
                   ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20),
+                      ),
+                      color: whiteColor,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 30,
+                        ),
+                        // NOTE : TITLE
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: edge,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    gadget.name,
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 2,
+                                  ),
+                                  Text.rich(
+                                    TextSpan(
+                                      text: 'by ',
+                                      style: greyTextStyle.copyWith(
+                                        fontSize: 16,
+                                      ),
+                                      children: [
+                                        TextSpan(
+                                            text: gadget.producer,
+                                            style: blackTextStyle.copyWith(
+                                              fontSize: 16,
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.orange,
+                                  ),
+                                  Text(
+                                    '${gadget.rating}',
+                                    style: blackTextStyle,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        // NOTE : DESC
+                        Padding(
+                          padding: EdgeInsets.only(left: edge),
+                          child: Text(
+                            'Deskripsi Produk',
+                            style: regulerTextStyle.copyWith(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: edge),
+                          child: Text(
+                            gadget.description,
+                            style: greyTextStyle.copyWith(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: edge,
+                          ),
+                          height: 50,
+                          width: MediaQuery.of(context).size.width - (2 * edge),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                '\Rp${gadget.price}',
+                                style: blackTextStyle.copyWith(
+                                  fontSize: 24,
+                                ),
+                              ),
+                              ElevatedButton(
+                                child: Text(
+                                  'Beli',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: greenColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(17),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Text("Terima Kasih Banyak"),
+                                  ));
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                      ],
+                    ),
+                  ),
+<<<<<<< HEAD
                   FavoriteButton(
                     isFavorite: isFavorite,
                     toggleFavorite: () {
@@ -199,15 +342,40 @@ class _DetailPageState extends State<DetailPage> {
                       });
                     },
                   ), // Menggunakan widget FavoriteButton
+=======
+>>>>>>> 053649fc5e008d823ef6947d5ddf33fde55f7a11
                 ],
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                  vertical: 30,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+<<<<<<< HEAD
 
 class FavoriteButton extends StatelessWidget {
   final bool isFavorite;
@@ -229,3 +397,5 @@ class FavoriteButton extends StatelessWidget {
     );
   }
 }
+=======
+>>>>>>> 053649fc5e008d823ef6947d5ddf33fde55f7a11
